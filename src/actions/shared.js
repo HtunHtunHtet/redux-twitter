@@ -9,9 +9,6 @@ export function handleInitialData() {
     return (dispatch) =>{
         return getInitialData()
             .then( ({users,tweets}) => {
-                console.log('shared users',users);
-                console.log('shared tweets', tweets);
-
                 dispatch(receiveUsers(users))
                 dispatch(setAuthedUser(AUTHED_ID))
                 dispatch(receiveTweets(tweets))
