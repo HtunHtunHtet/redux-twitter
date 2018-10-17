@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {handleInitialData} from "../actions/shared";
-
+import Dashboard from './Dashboard'
 import {connect} from 'react-redux'
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
-
+        <Dashboard/>
       </div>
     )
   }
