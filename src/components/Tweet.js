@@ -5,6 +5,8 @@ import {TiArrowBack} from 'react-icons/ti'
 import {TiHeartOutline} from 'react-icons/ti'
 import {TiHeartFullOutline} from 'react-icons/ti'
 
+//actions
+import {handleToggleTweet} from "../actions/tweets";
 
 
 class Tweet extends Component {
@@ -13,9 +15,17 @@ class Tweet extends Component {
         e.preventDefault()
     }
 
-    handleLike = ( e ) => [
-        e.preventDefault()
-    ]
+    handleLike = ( e ) => {
+        e.preventDefault();
+        const {dispatch,authedUser,tweet} = this.props
+        console.log("clicked props",this.props)
+
+      dispatch(handleToggleTweet({
+          id: tweet.id,
+          authedUser,
+          hasLiked: tweet.hasLiked
+      }))
+    }
 
     render() {
         const { name, avatar, timestamp, text, hasLiked, likes, replies, parent } = this.props.tweet
