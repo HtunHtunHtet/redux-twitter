@@ -18,7 +18,7 @@ class App extends Component {
 
           <LoadingBar/>
             {/*<Dashboard/>*/}
-          <NewTweet/>
+            <NewTweet/>
 
       </div>
     )
