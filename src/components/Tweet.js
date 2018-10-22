@@ -18,7 +18,6 @@ class Tweet extends Component {
     handleLike = ( e ) => {
         e.preventDefault();
         const {dispatch,authedUser,tweet} = this.props
-        console.log("clicked props",this.props)
 
       dispatch(handleToggleTweet({
           id: tweet.id,
@@ -28,12 +27,15 @@ class Tweet extends Component {
     }
 
     render() {
-        const { name, avatar, timestamp, text, hasLiked, likes, replies, parent } = this.props.tweet
+        console.log('inside tweet', this.props)
+        const { tweet } = this.props
 
         /**If there is no tweet **/
-        if (this.props.tweet === null) {
+        if (tweet === null) {
             return <p>This Tweet doesn't existd</p>
         }
+
+        const {name, avatar, timestamp, text, hasLiked, likes, replies, parent} = tweet
 
         /** Tweet exit **/
         return (
