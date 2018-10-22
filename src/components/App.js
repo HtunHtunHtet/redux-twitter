@@ -1,6 +1,7 @@
 import React, { Component , Fragment} from 'react'
 import {handleInitialData} from "../actions/shared";
 import Dashboard from './Dashboard'
+import TweetPage from './TweetPage'
 import NewTweet from './NewTweet'
 import {connect} from 'react-redux'
 
@@ -17,9 +18,14 @@ class App extends Component {
       <div>
 
           <LoadingBar/>
-            {/*<Dashboard/>*/}
-            <NewTweet/>
+           {/*<Dashboard/>*/}
+           {/* <NewTweet/>*/}
 
+          {
+              this.props.loading === true
+                    ? null
+                    :  <TweetPage match={{params: {id: '8xf0y6ziyjabvozdd253nd'}}}/>
+          }
       </div>
     )
   }
