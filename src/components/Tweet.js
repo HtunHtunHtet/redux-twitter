@@ -7,6 +7,7 @@ import {TiHeartFullOutline} from 'react-icons/ti'
 
 //actions
 import {handleToggleTweet} from "../actions/tweets";
+import {Link,withRouter} from 'react-router-dom';
 
 
 class Tweet extends Component {
@@ -27,7 +28,6 @@ class Tweet extends Component {
     }
 
     render() {
-        console.log('inside tweet', this.props)
         const { tweet } = this.props
 
         /**If there is no tweet **/
@@ -35,10 +35,11 @@ class Tweet extends Component {
             return <p>This Tweet doesn't existd</p>
         }
 
-        const {name, avatar, timestamp, text, hasLiked, likes, replies, parent} = tweet
+        const {name, avatar, timestamp, text, hasLiked, likes, replies, parent,id} = tweet
 
         /** Tweet exit **/
         return (
+            <Link to={`/tweet/${id}`} className='tweet' >
             <div className='tweet'>
                 <img
                     src={avatar}
@@ -68,6 +69,7 @@ class Tweet extends Component {
                     </div>
                 </div>
             </div>
+            </Link>
         )
     }
 }

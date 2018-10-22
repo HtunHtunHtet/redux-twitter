@@ -1,32 +1,33 @@
 import React, { Component } from  'react'
 import {connect} from 'react-redux'
 import {handleAddTweet} from "../actions/tweets";
+import {Redirect} from 'react-router-dom'
 
 class NewTweet extends  Component {
 
     state = {
-        text: ''
+        text: '',
+        toHome: false,
     }
 
     handleSubmit = (e) => {
         console.log('in');
 
         const {text} = this.props
-
         const {dispatch, id} = this.props
 
         dispatch(handleAddTweet(text, id))
 
         this.setState(() => ({
-            state: {
-                text: ''
-            }
+            text: '',
+            toHome: id ? false : true,
         }))
 
     }
 
     handleChange = (e) => {
         const text = e.target.value
+
         this.setState(() => ({
             text
         }))
@@ -34,11 +35,15 @@ class NewTweet extends  Component {
 
     render() {
 
-        const {text} = this.state
+        const {text ,toHome} = this.state
+
+        if (toHome === true) {
+            return <Redirect to='/' />
+        }
+
         const tweetLeft = 290 - text.length
 
-        console.log("New Tweet", text);
-        console.log("length Left", tweetLeft);
+
         return (
             <div>
                 <h3 className='center'>Compose new Tweet </h3>
@@ -59,8 +64,6 @@ class NewTweet extends  Component {
                                 {tweetLeft}
                             </div>
                         )
-
-
                     }
 
                     <button
